@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Employee Management API
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: employee-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
+    networks:
+      - employee-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/employees"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  employee-network:
+    driver: bridge
