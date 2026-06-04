@@ -1,6 +1,7 @@
 package com.employee;
 
 import com.employee.model.Employee;
+import com.employee.repository.EmployeeRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,6 +32,17 @@ class EmployeeE2ETest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    /**
+     * Clear database before each test to ensure test isolation
+     */
+    @BeforeEach
+    void setUp() {
+        employeeRepository.deleteAll();
+    }
 
     // ========== SCENARIO 1: NEW COMPANY ONBOARDING ==========
     @Test
