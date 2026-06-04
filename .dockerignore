@@ -1,0 +1,50 @@
+# .dockerignore - Exclude unnecessary files from Docker build
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+
+# Build artifacts
+target/
+build/
+*.jar
+*.class
+
+# Maven
+.m2/
+
+# Gradle
+.gradle/
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Node (if applicable)
+node_modules/
+npm-debug.log
+
+# Test coverage
+coverage/
+.coverage
+
+# Temporary files
+*.tmp
+*.temp
